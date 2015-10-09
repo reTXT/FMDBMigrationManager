@@ -48,6 +48,7 @@
  @return A new migration manager.
  */
 + (instancetype)managerWithDatabaseAtPath:(NSString *)path migrationsBundle:(NSBundle *)bundle;
++ (instancetype)managerWithDatabase:(FMDatabase *)database migrationsBundle:(NSBundle *)bundle bundlePath:(NSString *)bundlePath;
 
 /**
  @abstract Determines whether the receiver will perform a search for dynamically defined migrations. Default: `YES`.
@@ -68,6 +69,7 @@
  @abstract Returns the migrations bundle for the receiver.
  */
 @property (nonatomic, readonly) NSBundle *migrationsBundle;
+@property (nonatomic, readonly) NSString *migrationsBundlePath;
 
 ///-----------------------------
 /// @name Accessing Version Info
@@ -196,6 +198,11 @@
 ///-------------------------------------
 /// @name Accessing Migration Properties
 ///-------------------------------------
+
+/**
+ @abstract The path of the migration.
+ */
+@property (nonatomic, readonly) NSString *path;
 
 /**
  @abstract The name of the migration.
